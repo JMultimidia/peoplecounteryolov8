@@ -1,3 +1,4 @@
+# main.py
 import cv2
 import pandas as pd
 import numpy as np
@@ -20,8 +21,9 @@ translations_path = os.path.join('lang', language, 'translations.json')
 with open(translations_path, 'r') as f:
     translations = json.load(f)
 
-# Create an instance of the Database class
-db_instance = db.Database()
+# Use the factory function to create a Database instance
+# This centralizes the database connection logic in db.py
+db_instance = db.create_database_instance()
 
 # Define the interval to insert the data in the database
 insert_interval = int(os.getenv("INSERT_INTERVAL", 120)) # Default 120 seconds
